@@ -32,6 +32,10 @@ module.exports ={
                   plugin:()=>[autoprefixer()]
                }}
             ]
+         },
+         {
+            test:/\.(png|jpe?g|gif)$/,
+            loader:'url-loader?limit=8000&name=image/[name].[ext]'
          }
       ]
    }
