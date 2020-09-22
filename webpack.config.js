@@ -1,7 +1,8 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer')
+const htmlWebpackPlugin = require('html-webpack-plugin')
 module.exports ={
-   mode:'developement',
+   mode:'development',
    entry:'./src/index.js',
    output:{
       path:path.resolve(__dirname,'dist'),
@@ -21,16 +22,18 @@ module.exports ={
             exclude:/node_module/,
             use:[
                {loader:'style-loader'},
-               {loader:'css-loader',option:{
+               {loader:'css-loader',options:{
                   importloader:1,
                   modules:{
                      localIdentName:'[name]__[local]__[hash:base64:5]'
                   }
                }},
-               {loader:'postcss-loader',option:{
-                  ident:'postcss',
-                  plugin:()=>[autoprefixer()]
-               }}
+               {loader:'postcss-loader',
+                  options:{
+                     ident:'postcss',
+                     plugins:()=>[autoprefixer()]
+                  }
+               }
             ]
          },
          {
@@ -38,5 +41,12 @@ module.exports ={
             loader:'url-loader?limit=8000&name=image/[name].[ext]'
          }
       ]
-   }
+   },
+   plugins:[
+      new htmlWebpackPlugin({
+         template:__dirname+'/src/index.html', // usually inside public folder
+         filename:'index.html',
+         inject:'body'
+      })
+   ]
 };
