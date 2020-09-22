@@ -8,6 +8,7 @@ function App() {
       <div>
          <div>
             <Link to='/'>User</Link>
+            <br/>
             <Link to='/nebula'>nebula</Link>
          </div>
          <div>

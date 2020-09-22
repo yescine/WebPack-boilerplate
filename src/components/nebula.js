@@ -3,9 +3,11 @@ import classes from './nebula.css';
 import NebulaImage from '../assets/black.png'
 
 const Nebula = (props)=>{
+   return (
    <div className={classes.NebulaImage} >
       <img src={NebulaImage} className={classes.NebulaImg}/>
    </div>
+   );
 
 }
 
